@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import "./Css-for-Modals/CreateTaskModal.css"
 import axios from "axios";
+import Swal from 'sweetalert2'
 
 
 export default function CreateTaskModal({modalIsOpen,sprintName, setModalIsOpen,handleGetData}) {
@@ -50,11 +51,24 @@ export default function CreateTaskModal({modalIsOpen,sprintName, setModalIsOpen,
       })
       .then(response => {
         handleGetData()
+        Swal.fire({
+          title: 'Added!',
+          text: 'Task added .',
+          icon: 'success',
+          confirmButtonText: 'OK',
+        });
       })
       .catch(error => {
         console.log(error);
       });
 
+    }else{
+      Swal.fire({
+        title: 'warning!',
+        text: 'You have not filled data corectly.',
+        icon: 'warning',
+        confirmButtonText: 'OK',
+      });
     }
    }
 
@@ -67,7 +81,7 @@ export default function CreateTaskModal({modalIsOpen,sprintName, setModalIsOpen,
         onRequestClose={() => setModalIsOpen(false)}
       >
       <h3>Add New Task</h3>
-      <input value={taskName} placeholder={"Task Name"} onChange={(e)=>setTaskName(e.target.value)} type="text" />
+      <input  value={taskName} placeholder={"Task Name"} onChange={(e)=>setTaskName(e.target.value)} type="text" />
       <input value={taskDescription} placeholder={"Description"} onChange={(e)=>setTaskDescription(e.target.value)} type="text" />
        <select value={taskType}  onChange={(e)=>setTaskType(e.target.value)}  name="" id="">
         <option value="">Select Type</option>

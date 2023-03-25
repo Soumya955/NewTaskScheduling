@@ -1,3 +1,7 @@
+.menuContainer{
+    position: fixed;
+    top: 7rem;
+}
 .menuItems{
     font-family: 'Courier New', Courier, monospace;
     background-color: antiquewhite;

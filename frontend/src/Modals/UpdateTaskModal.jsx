@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import "./Css-for-Modals/UpdateTaskModal.css"
 import axios from "axios";
+import Swal from 'sweetalert2'
 
 
 export default function UpdateTaskModal({sendsingleitem,modalIsOpen,sprintName, setModalIsOpen,handleGetData}) {
@@ -59,12 +60,25 @@ setTaskType(sendsingleitem.type)
         status:taskStatus,
           })
       .then(response => {
+        Swal.fire({
+            title: 'Updated',
+            text: 'Data Upadated.',
+            icon: 'sucsess',
+            confirmButtonText: 'OK',
+          });
         handleGetData()
       })
       .catch(error => {
         console.log(error);
       });
 
+    }else{
+        Swal.fire({
+            title: 'warning!',
+            text: 'You have not filled data corectly.',
+            icon: 'warning',
+            confirmButtonText: 'OK',
+          });
     }
    }
 

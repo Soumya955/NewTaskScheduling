@@ -37,8 +37,8 @@ export default function Task({sprintName}) {
 
   return (
     <>
-      <div style={{}}>
-        <div className="taskNav">
+      <div >
+        <div className="taskNav" >
           <h3>{sprintName}</h3>
           <h4>{formattedDate}</h4>
         </div>

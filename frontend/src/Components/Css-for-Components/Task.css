@@ -4,19 +4,27 @@ display: flax;
 .taskNav{
     padding: 5px;
     margin-bottom: 1rem;
+    position: fixed;
+    top: 0;
+    width: 80%;
+    background-color: rgb(195, 231, 219);
 }
 .taskAdd{
     padding: 20px;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    font-size: 1.5rem;
+    margin-left: 30%;
     text-align: left;
-    color: rgb(19, 212, 230);
+    color: rgb(15, 222, 226);
 }
 .taskAdd:hover{background-color: aliceblue;
 }
 .taskContainer1{
     display: grid;
     grid-template-columns: repeat(3,1fr);
+    margin-top: 10rem;
+    margin-left: 30%;
     gap: 2rem;
 }
 .taskcard{

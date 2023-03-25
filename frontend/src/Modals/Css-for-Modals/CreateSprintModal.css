@@ -1,6 +1,6 @@
-.Modal1{
+.Modal2{
     position: absolute;
-    height: 10rem;
+    height: 11rem;
     overflow-y: scroll; 
     width: 20%;
     top: 30%;
@@ -11,7 +11,7 @@
     border-radius:1.7rem;
     box-shadow: 0rem 0rem .625rem rgba(0, 0, 0, 0.5);
   }
-  .Modal1::-webkit-scrollbar {
+  .Modal2::-webkit-scrollbar {
 	display: none; 
   }
   

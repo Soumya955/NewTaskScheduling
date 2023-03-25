@@ -11,6 +11,7 @@
     border-right: 1px solid black;
 }
 .taskContainer{
-    width: 60%;
+    overflow-y: scroll;
+    width: 80%;
     background-color: rgb(240, 238, 236);
 }

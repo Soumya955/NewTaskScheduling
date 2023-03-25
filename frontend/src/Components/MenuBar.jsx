@@ -28,7 +28,7 @@ export default function MenuBar({setSprintName,sprintName}) {
 console.log(sprints)
   return (
     <>
-    <div>
+    <div className='menuContainer'>
         <div className='menuName'> <span>Name</span> </div>
         <div className='menuItems' style={{backgroundColor:(sprintName==="All")?"rgb(208, 202, 194)":"antiquewhite"}} onClick={()=>handleSprintName("All")}> <span>All</span> <span></span></div>
         <div className='menuItemsADD' onClick={()=>setModalIsOpen(true)} > <span> + Add New Sprint</span> </div>
