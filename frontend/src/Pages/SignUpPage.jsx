@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import "./Css-for-Pages/SignUpPage.css"
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function SignUpPage() {
     const [firstname, setFirstName] = useState('');
     const [lastname, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [loading,setLoading]=useState(false)
 
     const navigate=useNavigate();
   
@@ -19,10 +20,12 @@ export default function SignUpPage() {
         email,
         password,
       };
+      setLoading(true)
       return axios
-        .post("http://localhost:8080/api/signup", payload)
+        .post("https://busy-coveralls-duck.cyclic.app/api/signup", payload)
         .then((res) => {
           navigate("/");
+          setLoading(false)
         })
         .catch((err) => {
           console.log(err)
@@ -32,7 +35,7 @@ export default function SignUpPage() {
     return (
       <div>
         
-        <form onSubmit={handleSubmit}>
+       {loading? <h3>...submitted</h3>:<form onSubmit={handleSubmit}>
         <h2>Sign up</h2>
         <label >FirstName:</label>
           <input
@@ -64,7 +67,8 @@ export default function SignUpPage() {
             required
           />
           <button type="submit">Sign up</button>
-        </form>
+          <h4>Want to login ? <Link to={"/"}>SignIn</Link></h4>
+        </form>}
       </div>
     );
 }

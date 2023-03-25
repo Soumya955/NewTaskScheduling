@@ -10,12 +10,14 @@ const app = express.Router();
 
 
 app.post("/signup", (req, res) => {
-  const {email, password} = req.body;
+  const {email, password,firstname,lastname} = req.body;
   bcrypt.hash(password, 5, async function(err, hash) {
       if(err){
           res.send("Something went wrong")
       }
       const user = new UserModel({
+        firstname,
+        lastname,
           email,
           password : hash
       })
@@ -40,7 +42,7 @@ app.post("/signin", async (req, res) => {
       }
       if(result){
           const token = jwt.sign({ userId : user._id }, "srb");
-          res.json({message : "Login Successfull",token})
+          res.json({message : "Login Successfull",token,user})
       }
       else{
           res.send("Invalid Credentials")
@@ -78,6 +80,12 @@ app.post("/sprints",async(req,res)=>{
 app.get("/sprints",async(req,res)=>{
     const user = await SprintModel.find();
     res.send(user)
+})
+app.delete("/sprints/:name",async(req,res)=>{
+    let {name}=req.params;
+    const user = await SprintModel.findOneAndDelete({sprint:name})
+    const user1 = await TaskModel.deleteMany({sprint:name})
+    res.send("deleted")
 })
 
 app.post("/tasks",async(req,res)=>{

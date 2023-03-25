@@ -20,7 +20,7 @@ setTaskStatus(sendsingleitem.status)
 setTaskType(sendsingleitem.type)
    },[sendsingleitem])
 
-    console.log(sendsingleitem,"sdddd")
+    //console.log(sendsingleitem,"sdddd")
    const [taskName,setTaskName]=useState("");
    const [taskDescription,setTaskDescription]=useState("");
    const [taskType,setTaskType]=useState("");
@@ -36,7 +36,7 @@ setTaskType(sendsingleitem.type)
    },[])
 
    const handleGetSprintData=()=>{
-       axios.get('http://localhost:8080/api/sprints')
+       axios.get('https://busy-coveralls-duck.cyclic.app/api/sprints')
        .then(response => {
          setSprints(response.data);
        })
@@ -51,7 +51,7 @@ setTaskType(sendsingleitem.type)
       let txt=""+taskName[0].toLocaleUpperCase()+taskName.slice(1,taskName.length).toLocaleLowerCase()
    
 
-    axios.patch(`http://localhost:8080/api/tasks/${sendsingleitem._id}`, {
+    axios.patch(`https://busy-coveralls-duck.cyclic.app/api/tasks/${sendsingleitem._id}`, {
         name: txt,
         description: taskDescription,
         type: taskType, 
@@ -109,7 +109,7 @@ setTaskType(sendsingleitem.type)
        </select>
        <select value={taskSprint}  onChange={(e)=>setTaskSprint(e.target.value)}>
         <option >Select Type</option>
-        {sprints.map((el)=><option value={el.sprint}>{el.sprint}</option>)}
+        {sprints.map((el)=><option key={el._id} value={el.sprint}>{el.sprint}</option>)}
        </select>
         <button className="add" onClick={() => {
             setModalIsOpen(false);

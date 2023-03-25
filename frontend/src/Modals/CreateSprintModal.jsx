@@ -13,14 +13,14 @@ export default function CreateSprintModal({modalIsOpen, setModalIsOpen,handleGet
    const handleClick=()=>{
     if(text){
       let txt=""+text[0].toLocaleUpperCase()+text.slice(1,text.length).toLocaleLowerCase()
-      axios.post('http://localhost:8080/api/sprints', {sprint:txt})
+      axios.post('https://busy-coveralls-duck.cyclic.app/api/sprints', {sprint:txt})
       .then(response => {
         handleGetSprintData()
         setText("")
         Swal.fire({
-          title: 'warning!',
-          text: 'You have not filled data corectly.',
-          icon: 'warning',
+          title: 'Created',
+          text: 'Sprint Created.',
+          icon: 'success',
           confirmButtonText: 'OK',
         });
       })

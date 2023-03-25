@@ -20,13 +20,13 @@ export default function Task({sprintName}) {
 
   const [data, setdata] = useState([]);
   const formattedDate = dayjs(new Date()).format("ddd DD MMM YYYY");
-  console.log(sprintName)
+  // console.log(sprintName)
 
   useEffect(()=>{
     handleGetData()
   },[sprintName])
   const handleGetData=()=>{
-    axios.get('http://localhost:8080/api/tasks')
+    axios.get('https://busy-coveralls-duck.cyclic.app/api/tasks')
         .then(response => {
           setdata( (sprintName==="All")?response.data:response.data.filter((el)=>el.sprint==sprintName))
         })
@@ -43,17 +43,16 @@ export default function Task({sprintName}) {
           <h4>{formattedDate}</h4>
         </div>
         <div className="taskContainer1">
-         {data?.map((el)=><div className="taskcard" key={el.id}>
-           <h3>{el.name}</h3>
-           <p>{el.descriptin}</p>
-           <h4>{el.type}</h4>
-           <h4>{el.status}</h4>
-           <h4>{el.sprint}</h4>
+         {data?.map((el)=><div className="taskcard" key={el._id}>
+           <h3>Name: <span style={{color:"blue"}}>{el.name}</span></h3>
+           <h5>Description:<span style={{color:"grey"}}>{el.description}</span></h5>
+           <h4>Type:<span style={{color:"Highlight"}}>{el.type}</span></h4>
+           <h4>Status:<span style={{color:"red"}}>{el.status}</span></h4>
+           <h4>Sprint:<span style={{color:"green"}}>{el.sprint}</span></h4>
            <div>
-      <FontAwesomeIcon onClick={()=>{setModalIsOpen2(true);setsendsingleitem(el)} }icon={faTrashAlt} style={{ color: 'red',float:"right",margin:"1rem" }} />
-      <FontAwesomeIcon  onClick={()=>{setModalIsOpen1(true);setsendsingleitem(el)}} icon={faPencilAlt} style={{ color: 'blue',float:"right" ,margin:"1rem" }} />
-    
-    </div>
+             <FontAwesomeIcon onClick={()=>{setModalIsOpen2(true);setsendsingleitem(el)} }icon={faTrashAlt} style={{ color: 'red',float:"right",margin:"1rem"}} />
+             <FontAwesomeIcon  onClick={()=>{setModalIsOpen1(true);setsendsingleitem(el)}} icon={faPencilAlt} style={{ color: 'blue',float:"right" ,margin:"1rem" }} />
+             </div>
          </div>)}
         </div>
         <div className="taskAdd" onClick={()=>setModalIsOpen(true)} >

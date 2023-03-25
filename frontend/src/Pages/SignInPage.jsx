@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import "./Css-for-Pages/SignInPage.css"
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 export default function SignInPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [loading,setLoading]=useState(false)
 
     const navigate=useNavigate();
 
@@ -17,10 +18,11 @@ export default function SignInPage() {
         email,
         password,
       };
+      setLoading(true)
       return axios
-        .post("http://localhost:8080/api/signin", payload)
+        .post("https://busy-coveralls-duck.cyclic.app/api/signin", payload)
         .then((res) => {
-            console.log(res)
+            localStorage.setItem("user",JSON.stringify(res.data.user))
             if(res.data.token){
                 Swal.fire({
                   title: 'Success!',
@@ -28,8 +30,10 @@ export default function SignInPage() {
                   icon: 'success',
                   confirmButtonText: 'OK',
                 });
+                    setLoading(false)
                     navigate("/dashboard")
               }else{
+                setLoading(false)
                 Swal.fire({
                     title: 'Warning!',
                     text: 'Invalid Credential.',
@@ -49,8 +53,8 @@ export default function SignInPage() {
     return (
       <div>
         
-        <form onSubmit={handleSubmit}>
-        <h2>Sign up</h2>
+        {loading? <h3>...submitted</h3>:<form onSubmit={handleSubmit}>
+        <h2>Sign In</h2>
           <label >Email:</label>
           <input
             type="email"
@@ -65,8 +69,9 @@ export default function SignInPage() {
             onChange={(event) => setPassword(event.target.value)}
             required
           />
-          <button type="submit">Sign up</button>
-        </form>
+          <button type="submit">Sign In</button>
+          <h4>Don't have an account ? <Link to={"/signup"}>SignUp</Link></h4>
+        </form>}
       </div>
     );
 }

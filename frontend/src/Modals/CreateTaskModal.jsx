@@ -27,7 +27,7 @@ export default function CreateTaskModal({modalIsOpen,sprintName, setModalIsOpen,
    },[])
 
    const handleGetSprintData=()=>{
-       axios.get('http://localhost:8080/api/sprints')
+       axios.get('https://busy-coveralls-duck.cyclic.app/api/sprints')
        .then(response => {
          setSprints(response.data);
        })
@@ -37,11 +37,11 @@ export default function CreateTaskModal({modalIsOpen,sprintName, setModalIsOpen,
    }
 
    const handleClick=()=>{
-    console.log(taskName,taskAssignee,taskDescription,taskSprint,taskStatus,taskType)
+   // console.log(taskName,taskAssignee,taskDescription,taskSprint,taskStatus,taskType)
     if(taskName&&taskAssignee&&taskDescription&&taskSprint&&taskStatus&&taskType){
       let txt=""+taskName[0].toLocaleUpperCase()+taskName.slice(1,taskName.length).toLocaleLowerCase()
-    console.log(txt)
-      axios.post('http://localhost:8080/api/tasks', {
+    //console.log(txt)
+      axios.post('https://busy-coveralls-duck.cyclic.app/api/tasks', {
     name: txt,
     description: taskDescription,
     type: taskType, // can be bug, feature or story
@@ -99,7 +99,7 @@ export default function CreateTaskModal({modalIsOpen,sprintName, setModalIsOpen,
        </select>
        <select value={taskSprint}  onChange={(e)=>setTaskSprint(e.target.value)}>
         <option >Select Type</option>
-        {sprints.map((el)=><option value={el.sprint}>{el.sprint}</option>)}
+        {sprints.map((el,i)=><option key={el+i} value={el.sprint}>{el.sprint}</option>)}
        </select>
         <button className="add" onClick={() => {
             setModalIsOpen(false);
