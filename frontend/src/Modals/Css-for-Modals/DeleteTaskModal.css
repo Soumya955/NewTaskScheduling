@@ -1,0 +1,51 @@
+.Modal1{
+    position: absolute;
+    height: 7rem;
+    overflow-y: scroll; 
+    width: 20%;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:white;
+    padding: 1.25rem;
+    border-radius:1.7rem;
+    box-shadow: 0rem 0rem .625rem rgba(0, 0, 0, 0.5);
+  }
+  .Modal1::-webkit-scrollbar {
+	display: none; 
+  }
+  
+  @media (min-width: 0px) and (max-width: 375px) {
+	.Modal1 {
+		width: 50%;
+    }
+	
+  
+  }  
+  @media (min-width: 375px) and (max-width: 1024px) {
+	.Modal1 {
+		width: 50%;
+    }
+	
+  } 
+  
+  input{
+    width:95%;
+    border: none;
+    border-bottom: 2px solid black;
+    display: block;
+  }
+  
+  .add{
+    float: right;
+    background-color: transparent;
+    border: none;
+    color: rgb(224, 43, 7);
+  }
+  .cancel{
+    float: right;
+    background-color: transparent;
+    border: none;
+    color: rgb(17, 240, 221);
+  }
+ 

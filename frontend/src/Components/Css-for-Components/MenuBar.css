@@ -1,0 +1,43 @@
+.menuItems{
+    font-family: 'Courier New', Courier, monospace;
+    background-color: antiquewhite;
+    height: 40px;
+    font-weight: 500;
+    text-align: left;
+    padding-left: 15px;
+    padding-top: 15px;
+    border-radius: 5px;
+    color: rgb(60, 72, 68);
+}
+.menuName{
+    font-family: 'Courier New', Courier, monospace;
+    background-color: rgb(244, 237, 229);
+    height: 60px;
+    font-weight: bolder;
+    font-size: large;
+    text-align: left;
+    padding-left: 25px;
+    padding-top: 25px;
+    border-radius: 5px;
+    border: 1px solid white;
+    color: rgb(34, 38, 37);
+}
+.menuItemsADD{
+    font-family: 'Courier New', Courier, monospace;
+    background-color: antiquewhite;
+    height: 40px;
+    text-align: left;
+    padding-left: 15px;
+    padding-top: 15px;
+    border-radius: 5px;
+    color: rgb(31, 182, 232);
+}
+.menuItemsADD:hover{
+    background-color: rgb(56, 228, 139);
+    color: rgb(232, 145, 31);
+}
+.menuItems:hover{
+    border: 1px solid grey;
+    background-color: rgb(232, 229, 225);
+}
+

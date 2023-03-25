@@ -1,0 +1,16 @@
+.parentContainer{
+    display:flex;
+    gap: 4rem;
+    width: 100%;
+   margin-left: 100px;
+
+   
+}
+.menuContainer{
+    width: 20%;
+    border-right: 1px solid black;
+}
+.taskContainer{
+    width: 60%;
+    background-color: rgb(240, 238, 236);
+}

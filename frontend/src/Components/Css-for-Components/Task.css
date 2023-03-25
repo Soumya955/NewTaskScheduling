@@ -1,0 +1,25 @@
+.parentContainer{
+display: flax;
+}
+.taskNav{
+    padding: 5px;
+    margin-bottom: 1rem;
+}
+.taskAdd{
+    padding: 20px;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    text-align: left;
+    color: rgb(19, 212, 230);
+}
+.taskAdd:hover{background-color: aliceblue;
+}
+.taskContainer1{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 2rem;
+}
+.taskcard{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 1rem;
+}
